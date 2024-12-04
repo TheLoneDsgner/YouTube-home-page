@@ -13,7 +13,20 @@
 .main{
     width: 100%;
     height: auto;
-    background-color: #ffffff;
+}
+
+
+/* Side nav bottom mobile */
+.side_nav_container_bottom{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+    row-gap: 1rem;
+    position: fixed;
+    z-index: 999;
 }
 
 /* header */
@@ -26,7 +39,7 @@
     align-items: center;
     padding: 0.75rem 1rem;
     background-color: #ffffff;
-    
+
 }
 .header-left{
     width: fit-content;
@@ -60,6 +73,7 @@
     height: 24px;
     display: flex;
     flex-direction: row;
+    column-gap: 0.5rem;
     justify-content: start;
     align-items: center;
     cursor: pointer;
@@ -71,9 +85,9 @@
 .youtube-logo p{
     width: fit-content;
     font-size: 0.625rem;
-    line-height: 0.75;
+    line-height: 1.4rem;
     color: #313030;
-    vertical-align: sub;
+    vertical-align: super;
 }
 
 .header-center{
@@ -145,7 +159,7 @@ input:focus{
     height: 20px;
 }
 
-.header-left{
+.header-right{
     width: fit-content;
     height: auto;
     display: flex;
@@ -216,6 +230,15 @@ input:focus{
     border-radius: 100px;
 }
 
+.search-icon-mobile{
+    width: fit-content;
+    height: auto;
+    padding: 0.25rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Dashboard container */
 .dashboard-container{
     width: 100%;
@@ -225,7 +248,7 @@ input:focus{
 }
 
 /* side nav */
-.side-nav-container{
+.side_nav_container{
     width: 14%;
     height: 100%;
     padding: 0.75rem;
@@ -301,6 +324,44 @@ input:focus{
     flex-wrap: nowrap;
 }
 
+/* Side nav colapse */
+.side_nav_container_colapse{
+    width: 5%;
+    height: 100%;
+    padding: 0.75rem 1rem;
+    display: none;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.side-nav-link-colapse{
+    width: 100%;
+    height: auto;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.75rem;
+    border-radius: 0.875rem;
+    text-align: center;
+}
+.side-nav-link-colapse:hover{
+    background-color: #E8E8E8;
+}
+
+.side-nav-link-text-colapse{
+    width: fit-content;
+    height: auto;
+
+}
+.side-nav-link-text-colapse p{
+    width: fit-content;
+    font-size: 0.625rem;
+    line-height: 0.875;
+    font-weight: 400;
+}
+
 /* side nav section divider */
 .side-nav-section-divider{
     font-weight: 100%;
@@ -310,24 +371,56 @@ input:focus{
 
 /* dashboard right side */
 .main-content-container{
-    width: 86%;
+    width: 100%;
     height: auto;
-    /* background-color: #F0EFEE; */
-    /* padding: 1.4rem 2rem; */
     overflow: scroll;
+    padding: 0 2rem 0 2rem;
 }
 
 /* filter */
+.filter-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem;
+}
+.explore-icon-container{
+    width: fit-content;
+    height: auto;
+    display: none;
+}
+.explore-icon-container a{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: #F2F2F2;
+}
+
 .top-filter-items-container{
     width: 100%;
     height: auto;
-    padding: 0 2rem 1rem 2rem;
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
     column-gap: 1rem;
-    overflow: hidden ;
+
+    overflow-x: auto;
+    scroll-snap-type: mandatory;
     flex-wrap: nowrap;
+
+    scrollbar-width: none;
+}
+
+.top-filter-items-container ::-webkit-scrollbar{
+    display: none;
 }
 .filter-item{
     width: fit-content;
@@ -336,6 +429,9 @@ input:focus{
     background-color: #F2F2F2;
     border-radius: 0.5rem;
     cursor: pointer;
+    flex-shrink: 0;
+
+    scroll-snap-align: start;
 }
 .filter-item:hover{
     background-color: #F0EFEE;
@@ -361,7 +457,7 @@ input:focus{
 .card-sectioner-container{
     width: 100%;
     height: auto;
-    padding: 2rem;
+    padding: 2rem 0 2rem 0;
     display: flex;
     flex-direction: column;
     row-gap: 3rem;
@@ -373,7 +469,7 @@ input:focus{
     height: auto;
     display: flex;
     flex-direction: row;
-    column-gap: 1.2rem;
+    column-gap: 1rem;
     row-gap: 2.5rem;
     justify-content: flex-start;
     align-items: start;
@@ -386,6 +482,11 @@ input:focus{
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+    position: relative;
+
+    flex-shrink: 1;
+    /*flex-grow: 1;
+    flex-basis:  1 auto; */
 }
 .card-normal a{
     text-decoration: none;
@@ -395,12 +496,16 @@ input:focus{
     height: 170px;
     background-color: #5151CB;
     border-radius: 1rem;
-    background-image: url(./youtube-asset/taskmg-dashboard.png);
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: end;
+    overflow: clip;
+}
+.card-image img{
+    width: 100%;
+    height: 100%;
 }
 .time-stamp-container{
     width: 100%;
@@ -409,6 +514,7 @@ input:focus{
     display: flex;
     justify-content: end;
     align-items: end;
+    position: absolute;
 }
 .stamp-rapper{
     width: fit-content;
@@ -532,7 +638,6 @@ input:focus{
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
-
 }
 .section-label{
     width: fit-content;
@@ -565,6 +670,7 @@ input:focus{
     height: auto;
     display: flex;
     flex-direction: row;
+    column-gap: 1rem;
     align-items: start;
     justify-content: space-between;
     flex-wrap: nowrap;
@@ -585,8 +691,12 @@ input:focus{
     height: 360px;
     background-color: #5151CB;
     border-radius: 1rem;
-    background-image: url(./youtube-asset/code-animation.jpg);
-    background-size: contain;
+    overflow: clip;
+}
+.card-img-shorts img{
+    width: auto;
+    height: 100%;
+    display: flex;
 }
 .card-detail-shorts{
     width: 100%;
